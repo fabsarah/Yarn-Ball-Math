@@ -1,0 +1,33 @@
+%% Yarn! Ball! Math!
+% Slightly more simple model
+Winding = 0;%number of winds
+Ci = 8;%circumference of initial ball in cm
+Yr = 10799.9784;%number of "yards" remaining (in cm)
+W = 0.16;%width of yarn in cm (accounting for some compression)
+sp = 0.18;%scaling parameter
+while Ci<Yr %stop when we're out of yarn
+   Winding = Winding +1; %keep going!
+   Ci = Ci+(W*sp); %New circumference
+   Yr = Yr-Ci;%update the yardage!
+end
+sprintf('We need %d winds',Winding)%How many winds do we need?
+%%
+% Slightly more complicated model
+Winding = 0;%number of winds
+Ci = 8;%circumference of initial ball in cm
+Yr = 10799.9784;%number of "yards" remaining (in cm)
+W = 0.16;%width of yarn in cm (accounting for some compression)
+sp = 0.0290;%scaling parameter
+while Ci<Yr %stop when we're out of yarn
+   Winding = Winding +1; %keep going!
+   R = Ci/(2*pi);%Radius
+   Ci = (2*pi)*(R+(W*sp)); %New circumference
+   Yr = Yr-Ci;%update the yardage!
+end
+sprintf('We need %d winds',Winding)%How many winds do we need?
+%% Volume of sphere
+Ci = 24.5;
+R = Ci/(2*pi);%Radius
+V=4/3*(pi*R^3);
+%% Radius (?) of the original yarn tube
+ro = sqrt(V/(pi*10799.9784));
